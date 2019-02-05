@@ -30,7 +30,7 @@ with open(file, 'r') as csvfile:
         total_profitorloss = sum(row[1])
         #alternative method - netprofit_netloss == sum[1]
         #alternative method - csvreader.append(int(row[1]))
-        avgchange = (total_profitorloss/total_months)*100
+        avgchange = total_profitorloss/(total_months - 1)
         #Alternative method - 
            #Initialize variables to calculate average change
             #previousrowamt = int(row[1])
@@ -40,7 +40,7 @@ with open(file, 'r') as csvfile:
 
     #Print out the solution in a text file
     outputtextfile = open('budgetdata_csv', 'w')
-    outputtestfile.writerow("Financial Analysis")
+    outputtextfile.writerow("Financial Analysis")
     outputtextfile.writerow("----------------------")
     outputtextfile.writerow("Total Months:" [total_months])
     outputtextfile.writerow("Total:" [total_profitorloss])

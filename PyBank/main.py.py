@@ -42,11 +42,11 @@ with open(file, 'r') as csvfile:
     outputtextfile = open('budgetdata_csv', 'w')
     outputtestfile.writerow("Financial Analysis")
     outputtextfile.writerow("----------------------")
-    outputtextfile.writerow("Total Months:" {total_months})
-    outputtextfile.writerow("Total:" {total_profitorloss})
-    outputtextfile.writerow("Average Change:" {avgchange})
-    outputtextfile.writerow("Greatest Increase in Profits:" {greatestincrease})
-    outputtextfile.writerow("Greatest Decrease in Profits:" str{greatestdecrease})
+    outputtextfile.writerow("Total Months:" [total_months])
+    outputtextfile.writerow("Total:" [total_profitorloss])
+    outputtextfile.writerow("Average Change:" [avgchange])
+    outputtextfile.writerow("Greatest Increase in Profits:" [greatestincrease])
+    outputtextfile.writerow("Greatest Decrease in Profits:" [greatestdecrease])
 
 #Additional Notes:
 #Calculate Average Change for each month (current change minus previous change)

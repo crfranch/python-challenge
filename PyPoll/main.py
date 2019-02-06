@@ -20,11 +20,9 @@ with open(dataSet_csv, 'r') as csvfile:
     candidatelist=0
     won_candidatevotes=0
     lost_candidatevotes=0
-    total_votes=0
     election_winner=0
     
-    #Using "csvreader" variable, create another variable to create a list, being column one of the csv "file" previsouly defined
-    #convert cvsreader into a list/array
+    #convert dataSet into a list/array
     candidatelist = []
     voteslist = []
     #iterate rows within the created variable list
@@ -37,24 +35,29 @@ with open(dataSet_csv, 'r') as csvfile:
         voteslist.append(row[4])
 
     #The total number of votes each candidate won
+    #candidates = ["Khan"
+     #     "Correy",
+      #    "Li",
+       #   "O'Tooley"]
+    #print(f'{candidates["name"]}')
     for i in range(len(candidatelist)):
-        print(candidatelist[i] + voteslist[i]/total_months)
-
+        print((candidatelist[i] + voteslist[i])/total_votes)
     #The winner of the election votes based on popular vote
+        election_winner.pop((row[1] + " " + row[2]))
 
     #Print out the solution in a text file
-    
     outputtextfile = \
     f'''Election Results
     --------------------------------
     Total Votes: {total_votes}
     --------------------------------
-    Khan: {won_candidatevotes}
-    Correy: {lost_candidatevotes}
-    Li: {total_votes}
-    O'Tooley: {election_winner}
+    Khan: {won_candidatevotes} ({total_votes})
+    Correy: {lost_candidatevotes} ({total_votes})
+    Li: {}
+    O'Tooley: {}
     ---------------------------------
-    Winner: '''
+    Winner: {election_winner}
+    '''
 
     print(outputtextfile)
     #dataSet_csv.write(outputtextfile)

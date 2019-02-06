@@ -7,6 +7,7 @@ import csv
 
 #For writing file:
 budgetdata_csv = os.path.join("budget_data.csv")
+
 #Absolute Path Name (For Reference) -- "C:\Users\crfra\python-challenge\PyBank\budget_data.csv"
 
 #Open the CSV File & make sure new line is an empty space
@@ -18,43 +19,61 @@ with open(budgetdata_csv, 'r') as csvfile:
     
     total=0
     total_months=0
-    total_profitorloss=0
+    total_change = 0
+    total_net=0
     avgchange=0
-    previousrow=0
+    previous_value=0
     greatestdecrease=0
     greatestincrease=0
+    increase_date=0
+    decrease_date=0
     
     #Using "csvreader" variable, create another variable to create a list, being column one of the csv "file" previsouly defined
     #convert cvsreader into a list/array
-    csvreader = []
+    #csvreader = []
     #iterate rows within the created variable list
     for row in csvreader: 
         #Calculate the totalmonths by counting the number of elements in the array previously defined in row 20
-        total_months = len(row[0])
+        #total_months = len(row[0])
+        total_months += 1
+        #total_months = total_months + 1
         #alternative method - total_months == row[0]
-        total_profitorloss = sum(row[1])
+        total_net += int(row[1])
+        #total_net = total_net + int(row[1])
         #alternative method - netprofit_netloss == sum[1]
         #alternative method - csvreader.append(int(row[1]))
-        avgchange = (total_profitorloss - previousrow)/(total_months - 1)
+
+        if total_months > 1:
+            change = int(row[1]) - previous_value
+            total_change += change
+           # total_change = total_change + change
+            if change > greatestincrease:
+                greatestincrease = change
+                increase_date = row[0]
+            if change < greatestdecrease:
+                greatestdecrease = change
+                decrease_date = row[0]
+        previous_value = int(row[1])
+
+    #total_net = (total_profitorloss - previousrow)/(total_months - 1)
         #Alternative method - 
            #Initialize variables to calculate average change
             #previousrowamt = int(row[1])
             #averagechange = int(row[1]) - previousrowamt / (total)
-        greatestincrease = int(max(row[1]))
-        greatestdecrease = int(min(row[1]))
 
+    avgchange = total_change / (total_months-1)
     #Print out the solution in a text file
     outputtextfile = \
     f'''Financial Analysis
     --------------------------------
     Total Months: {total_months}
-    Total: {total_profitorloss}
-    Average Change: {avgchange}
-    Greatest Increase in Profits: {greatestincrease}
-    Greatest Decrease in Profits: {greatestdecrease}'''
+    Total: {total_net}
+    Average Change: {avgchange:.2f}
+    Greatest Increase in Profits: {increase_date} {greatestincrease}
+    Greatest Decrease in Profits: {decrease_date} {greatestdecrease}'''
 
     print(outputtextfile)
-    budgetdata_csv.write(outputtextfile)
+   # budgetdata_csv.write(outputtextfile)
 
     #Alternative method to print out solution
     #outputtextfile = open('budgetdata_csv', 'w')

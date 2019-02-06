@@ -10,14 +10,14 @@ dataSet_csv = os.path.join("dataSet.csv")
 #Absolute Path Name (For Reference) -- "C:\Users\crfra\python-challenge\PyBank\budget_data.csv"
 
 #Open the CSV File & make sure new line is an empty space
-with open(dataSet_csv, 'w') as csvfile:
+with open(dataSet_csv, 'r') as csvfile:
     #read through the csvfile and split the date from the prift/losses with a "," as the delimiter
-    csvreader = csv.reader(csvfile, delimiter=',')
+    dataSet = csv.reader(csvfile, delimiter=',')
     #Initialize variable csvheader and use the next function to terutn the next row of the reader's iterable object as a list
-    csvheader = next(csvreader)
+    csvheader = next(dataSet)
     
     total_votes=0
-    candidatelist=str
+    candidatelist=0
     won_candidatevotes=0
     lost_candidatevotes=0
     total_votes=0
@@ -25,25 +25,30 @@ with open(dataSet_csv, 'w') as csvfile:
     
     #Using "csvreader" variable, create another variable to create a list, being column one of the csv "file" previsouly defined
     #convert cvsreader into a list/array
-    dataset = []
+    candidatelist = []
+    voteslist = []
     #iterate rows within the created variable list
-    for row in dataset: 
+    for row in dataSet: 
         #Calculate total number of votes cast
-        total_votes = len(row[0])
+        total_votes += float(row[4])
         #Figure out list of candidates who received votes
-        candidatelist = sum(row[1])
+        candidatelist.append((row[1] + " " + row[2]))
         #The percentage of votes each candidate won
+        voteslist.append(row[4])
 
-        #The total number of votes each candidate won
-        
-        #The winner of the election votes based on popular vote
-        
+    #The total number of votes each candidate won
+    for i in range(len(candidatelist)):
+        print(candidatelist[i] + voteslist[i]/total_months)
+
+    #The winner of the election votes based on popular vote
+
     #Print out the solution in a text file
     
     outputtextfile = \
     f'''Election Results
     --------------------------------
     Total Votes: {total_votes}
+    --------------------------------
     Khan: {won_candidatevotes}
     Correy: {lost_candidatevotes}
     Li: {total_votes}
@@ -52,4 +57,4 @@ with open(dataSet_csv, 'w') as csvfile:
     Winner: '''
 
     print(outputtextfile)
-    budgetdata_csv.write(outputtextfile)
+    #dataSet_csv.write(outputtextfile)

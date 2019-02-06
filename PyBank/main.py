@@ -3,14 +3,14 @@ import os
 import csv
 
 #Pull file from following path for reading--> C:\Users\crfra\python-challenge\budget_data.csv
-file = '../python-challenge/PyBank/budget_data.csv'
+#file = 'budget_data.csv'
 
 #For writing file:
-budgetdata_csv = os.path.join("..","python-challenge","budget_data.csv")
+budgetdata_csv = os.path.join("budget_data.csv")
 #Absolute Path Name (For Reference) -- "C:\Users\crfra\python-challenge\PyBank\budget_data.csv"
 
 #Open the CSV File & make sure new line is an empty space
-with open(file, 'r') as csvfile:
+with open(budgetdata_csv, 'r') as csvfile:
     #read through the csvfile and split the date from the prift/losses with a "," as the delimiter
     csvreader = csv.reader(csvfile, delimiter=',')
     #Initialize variable csvheader and use the next function to terutn the next row of the reader's iterable object as a list
@@ -18,6 +18,11 @@ with open(file, 'r') as csvfile:
     
     total=0
     total_months=0
+    total_profitorloss=0
+    avgchange=0
+    previousrow=0
+    greatestdecrease=0
+    greatestincrease=0
     
     #Using "csvreader" variable, create another variable to create a list, being column one of the csv "file" previsouly defined
     #convert cvsreader into a list/array
@@ -30,7 +35,7 @@ with open(file, 'r') as csvfile:
         total_profitorloss = sum(row[1])
         #alternative method - netprofit_netloss == sum[1]
         #alternative method - csvreader.append(int(row[1]))
-        avgchange = total_profitorloss/(total_months - 1)
+        avgchange = (total_profitorloss - previousrow)/(total_months - 1)
         #Alternative method - 
            #Initialize variables to calculate average change
             #previousrowamt = int(row[1])
@@ -39,14 +44,27 @@ with open(file, 'r') as csvfile:
         greatestdecrease = int(min(row[1]))
 
     #Print out the solution in a text file
-    outputtextfile = open('budgetdata_csv', 'w')
-    outputtextfile.writerow("Financial Analysis")
-    outputtextfile.writerow("----------------------")
-    outputtextfile.writerow("Total Months:" [total_months])
-    outputtextfile.writerow("Total:" [total_profitorloss])
-    outputtextfile.writerow("Average Change:" [avgchange])
-    outputtextfile.writerow("Greatest Increase in Profits:" [greatestincrease])
-    outputtextfile.writerow("Greatest Decrease in Profits:" [greatestdecrease])
+    outputtextfile = \
+    f'''Financial Analysis
+    --------------------------------
+    Total Months: {total_months}
+    Total: {total_profitorloss}
+    Average Change: {avgchange}
+    Greatest Increase in Profits: {greatestincrease}
+    Greatest Decrease in Profits: {greatestdecrease}'''
+
+    print(outputtextfile)
+    budgetdata_csv.write(outputtextfile)
+
+    #Alternative method to print out solution
+    #outputtextfile = open('budgetdata_csv', 'w')
+    #outputtextfile.writerow("Financial Analysis")
+    #outputtextfile.writerow("----------------------")
+    #outputtextfile.writerow("Total Months:" [total_months])
+    #outputtextfile.writerow("Total:" [total_profitorloss])
+    #outputtextfile.writerow("Average Change:" [avgchange])
+    #outputtextfile.writerow("Greatest Increase in Profits:" [greatestincrease])
+    #outputtextfile.writerow("Greatest Decrease in Profits:" [greatestdecrease])
 
 #Additional Notes:
 #Calculate Average Change for each month (current change minus previous change)

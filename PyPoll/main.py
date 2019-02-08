@@ -2,48 +2,52 @@
 import os
 import csv
 
-#Pull file from following path for reading--> C:\Users\crfra\python-challenge\budget_data.csv
-#file = 'budget_data.csv'
-
-#For writing file:
-dataSet_csv = os.path.join("dataSet.csv")
-#Absolute Path Name (For Reference) -- "C:\Users\crfra\python-challenge\PyBank\budget_data.csv"
+#Read through the resource csv file titled "election_data.csv"
+election_data = os.path.join("election_data.csv")
 
 #Open the CSV File & make sure new line is an empty space
-with open(dataSet_csv, 'r') as csvfile:
-    #read through the csvfile and split the date from the prift/losses with a "," as the delimiter
-    dataSet = csv.reader(csvfile, delimiter=',')
-    #Initialize variable csvheader and use the next function to terutn the next row of the reader's iterable object as a list
-    csvheader = next(dataSet)
+with open(election_data, 'r') as csvfile:
+    #read through the csvfile and separate the three columns with a "," as the delimiter
+    csvreader = csv.reader(csvfile, delimiter=',')
+    #Initialize variable csvheader and use the next function to skip headers in csvfile
+    csvheader = next(csvreader)
     
-    total_votes=0
-    candidatelist=0
-    won_candidatevotes=0
-    lost_candidatevotes=0
-    election_winner=0
-    
-    #convert dataSet into a list/array
-    candidatelist = []
-    voteslist = []
-    #iterate rows within the created variable list
-    for row in dataSet: 
-        #Calculate total number of votes cast
-        total_votes += float(row[4])
-        #Figure out list of candidates who received votes
-        candidatelist.append((row[1] + " " + row[2]))
-        #The percentage of votes each candidate won
-        voteslist.append(row[4])
+    #set each variable to an index of zero
+    total_votes= 0
+    candidatevotes_won= 0
+    candidatevotes_lost= 0
+    election_winner= 0
+    #Variables for each candidate's name:
+    Khan = 0
+    Correy = 0
+    Li = 0
+    OTooley = 0
 
-    #The total number of votes each candidate won
-    #candidates = ["Khan"
-     #     "Correy",
-      #    "Li",
-       #   "O'Tooley"]
+    #Complete a list of candidates who received votes
+    Candidates = ["Khan", "Correy", "Li", "O'Tooley"]
+
+    #Use Variables and Candidates List to count number of votes each candidate received...
+    for row in csvreader: 
+        #Calculate total number of votes cast by counting the number of rows in the 'Voter ID' Column:
+        if row[3] == Candidates[0]:
+            Khan += 1
+        elif row[3] == Candidates[1]:
+            Correy += 1
+        elif row[3]  == Candidates[2]:
+            Li += 1
+        else row[3] == Candidates[3]:
+            OTooley += 1
+
+    for candidate in Candidates:
+        #Calculate percentage of votes each candidate won
+        if candidatevotes_won = []
+        #Calculate the total number of votes each candidate won
+
+
+
     #print(f'{candidates["name"]}')
     for i in range(len(candidatelist)):
-        print((candidatelist[i] + voteslist[i])/total_votes)
     #The winner of the election votes based on popular vote
-        election_winner.pop((row[1] + " " + row[2]))
 
     #Print out the solution in a text file
     outputtextfile = \
@@ -56,8 +60,4 @@ with open(dataSet_csv, 'r') as csvfile:
     Li: {}
     O'Tooley: {}
     ---------------------------------
-    Winner: {election_winner}
-    '''
-
-    print(outputtextfile)
-    #dataSet_csv.write(outputtextfile)
+    Winner: {election_winner}'''

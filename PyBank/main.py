@@ -49,10 +49,10 @@ with open(budgetdata_csv, 'r') as csvfile:
            # total_change = total_change + change
             if change > greatestincrease:
                 greatestincrease = change
-                increase_date = row[0]
+                increase_date = int(row[0])
             if change < greatestdecrease:
                 greatestdecrease = change
-                decrease_date = row[0]
+                decrease_date = int(row[0])
         previous_value = int(row[1])
 
     #total_net = (total_profitorloss - previousrow)/(total_months - 1)
@@ -67,10 +67,10 @@ with open(budgetdata_csv, 'r') as csvfile:
     f'''Financial Analysis
     --------------------------------
     Total Months: {total_months}
-    Total: {total_net}
-    Average Change: {avgchange:.2f}
-    Greatest Increase in Profits: {increase_date} {greatestincrease}
-    Greatest Decrease in Profits: {decrease_date} {greatestdecrease}'''
+    Total: ${total_net}
+    Average Change: ${avgchange:.2f}
+    Greatest Increase in Profits: {increase_date} ({greatestincrease})
+    Greatest Decrease in Profits: {decrease_date} ({greatestdecrease})'''
 
     print(outputtextfile)
    # budgetdata_csv.write(outputtextfile)

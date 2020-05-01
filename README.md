@@ -2,7 +2,7 @@
 
 * I have created a series of directories for various concepts in Python. I have used folder names corresponding to the challenges. 
 
-* For applications I've built, refer to **PyBank** (financial data) and  **PyPoll** (voting poll data).
+* For applications I've built, refer to **PyBank** (financial data) and  **PyPoll** (rural town election data).
 
 * Within both of the application folders, I've created a `main.py` file. This will be the main script to run for each analysis.
 

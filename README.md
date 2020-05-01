@@ -8,8 +8,6 @@
 
 ## PyBank
 
-![Revenue](Images/revenue-per-lead.jpg)
-
 * I have written a Python script for analyzing the financial records of a company. I've saved my financial data in an excel file as [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. 
 
 * I created a Python script that analyzes the records to calculate each of the following:
@@ -39,8 +37,6 @@
 * In addition, I created script to print the analysis to the terminal and export a text file with the results.
 
 ## PyPoll
-
-![Vote-Counting](Images/Vote_counting.jpg)
 
 * In this challenge, I have written script to help a small, rural town modernize its vote-counting process. 
 

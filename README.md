@@ -1,16 +1,16 @@
 # Python Challenges
 
-# I have created a series of directories for various concepts in Python. I have used folder names corresponding to the challenges. 
+* I have created a series of directories for various concepts in Python. I have used folder names corresponding to the challenges. 
 
-# For applications I've built, refer to **PyBank** (financial data) and  **PyPoll** (voting poll data).
+* For applications I've built, refer to **PyBank** (financial data) and  **PyPoll** (voting poll data).
 
-# Within both of the application folders, I've created a `main.py` file. This will be the main script to run for each analysis.
+* Within both of the application folders, I've created a `main.py` file. This will be the main script to run for each analysis.
 
 ## PyBank
 
 ![Revenue](Images/revenue-per-lead.jpg)
 
-* I've created a Python script for analyzing the financial records of a company. I've saved my financial data in an excel file as [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. 
+* I have written a Python script for analyzing the financial records of a company. I've saved my financial data in an excel file as [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. 
 
 * I created a Python script that analyzes the records to calculate each of the following:
 
